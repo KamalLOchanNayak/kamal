@@ -1,0 +1,25 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.testng.Assert;
+public class ParseJSON {
+    static String json = "...";
+    public static void main(String[] args) {
+        JSONObject obj = new JSONObject(json);
+        
+        JSONArray arr = obj.getJSONArray("player");
+		int No_of_wicketkipper=0;
+        for (int i = 0; i < arr.length(); i++) {
+            String role = arr.getJSONObject(i).getString("role");
+            System.out.println(role);
+			if(role == "Wicket-keeper")
+			{
+			 No_of_wicketkipper++;
+			}
+			
+        }
+		if(No_of_wicketkipper >=1)
+		{
+			Assert.assretTrue(true);
+		}
+    }
+}
