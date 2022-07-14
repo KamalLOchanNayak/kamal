@@ -1,0 +1,29 @@
+
+public class ParseJSON {
+    public static void main(String[] args) {
+    JSONParser   Jsonparser = new JSONParser();
+	FileReader reader = new FileReader(".\\question.json");
+		Object obj =Jsonparser.parser(reader);
+		
+        JSONObject playerjsonobj = (JSONObject)obj;
+        JSONArray array =(JSONArray)playerjsonobj.get("player");
+	  int No_of_player=0;
+        for (int i = 0; i < array.size(); i++) 
+	  {
+		JSONObject player = (JSONObject)array.get(i);
+			 
+            String country = (String) player.get("country");
+            System.out.println("Player of "+country);
+
+			if(country != "india")
+			{
+			 No_of_player++;
+			}
+			
+        }
+		if(No_of_player == 4)
+		{
+			Assert.assretTrue(true);
+		}
+    }
+}
